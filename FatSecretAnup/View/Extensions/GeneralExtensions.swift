@@ -23,3 +23,14 @@ func setUpDetailsViewConstraints(detailsView: UIView, parentView: UIView){
         detailsView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor)
     ])
 }
+
+// Function to layout constraints for ViewControllers
+func setUpDetailsViewConstraintsNav(detailsView: UIView, parentView: UIView, navigationBar: UINavigationBar){
+    detailsView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+        detailsView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
+        detailsView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor),
+        detailsView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor),
+        detailsView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor)
+    ])
+}

@@ -17,21 +17,11 @@ class TabBarViewModel {
     let homeViewController = HomeViewController()
     let reportsViewController = ReportsViewController()
     let meViewController = MeViewController()
-    let diaryNavController: UINavigationController
-    let premiumNavController: UINavigationController
-    let homeNavController: UINavigationController
-    let reportsNavController: UINavigationController
-    let meNavController: UINavigationController
     var tabBarItems: [TabBarItems] = []
-    var tabBarViewControllers: [UINavigationController]
+    var tabBarViewControllers: [UIViewController]
     
     init() {
-        self.diaryNavController = UINavigationController(rootViewController: diaryViewController)
-        self.premiumNavController = UINavigationController(rootViewController: premiumViewController)
-        self.homeNavController = UINavigationController(rootViewController: homeViewController)
-        self.reportsNavController = UINavigationController(rootViewController: reportsViewController)
-        self.meNavController = UINavigationController(rootViewController: meViewController)
-        self.tabBarViewControllers = [homeNavController, meNavController, diaryNavController, reportsNavController, premiumNavController]
+        self.tabBarViewControllers = [homeViewController, meViewController, diaryViewController, reportsViewController, premiumViewController]
     }
 
     func getTabBarItems(){
@@ -42,16 +32,17 @@ class TabBarViewModel {
         tabBarItems.forEach{tabBarItem in addTabBarItems(navController: tabBarItem.controller, systemName: tabBarItem.image, title: tabBarItem.title)}
     }
     
-    private func addTabBarItems(navController: UINavigationController, systemName: String, title: String){
+    private func addTabBarItems(navController: UIViewController, systemName: String, title: String){
         if let image = UIImage(systemName: systemName) {
             navController.tabBarItem = UITabBarItem(title: title, image: image, tag: 0)
         }
-        navController.viewControllers.first?.navigationItem.title = title
+        //navController.viewControllers.first?.navigationItem.title = title
+        navController.navigationItem.title = title
     }
     func addAvatar(){
         if let originalImage = UIImage(named: "avatarImg") {
             let roundedImage = makeRoundImageWithBorder(image: originalImage, borderWidth: 2, borderColor: UIColor.white, outerBorderColor: UIColor.gray).withRenderingMode(.alwaysOriginal)
-            meNavController.tabBarItem = UITabBarItem(title: "Me", image: roundedImage, selectedImage: nil)
+            meViewController.tabBarItem = UITabBarItem(title: "Me", image: roundedImage, selectedImage: nil)
         }
     }
     

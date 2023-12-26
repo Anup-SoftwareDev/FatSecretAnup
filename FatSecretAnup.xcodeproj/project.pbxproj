@@ -21,6 +21,12 @@
 		CA02F4192B381A060032EC50 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4182B381A060032EC50 /* TabBarViewModel.swift */; };
 		CA02F41E2B38200D0032EC50 /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F41D2B38200D0032EC50 /* TabBarModel.swift */; };
 		CA02F4212B3820A30032EC50 /* TabBarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4202B3820A30032EC50 /* TabBarData.swift */; };
+		CA02F4242B3A2D640032EC50 /* SegueTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4232B3A2D640032EC50 /* SegueTestViewController.swift */; };
+		CA02F4262B3AA45F0032EC50 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4252B3AA45E0032EC50 /* DiaryViewModel.swift */; };
+		CA02F42A2B3AAD070032EC50 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4292B3AAD070032EC50 /* HomeViewModel.swift */; };
+		CA02F42C2B3AB1EC0032EC50 /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F42B2B3AB1EC0032EC50 /* MeViewModel.swift */; };
+		CA02F42E2B3AB2000032EC50 /* ReportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F42D2B3AB2000032EC50 /* ReportsViewModel.swift */; };
+		CA02F4302B3AB2130032EC50 /* PremiumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F42F2B3AB2130032EC50 /* PremiumViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +46,12 @@
 		CA02F4182B381A060032EC50 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		CA02F41D2B38200D0032EC50 /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
 		CA02F4202B3820A30032EC50 /* TabBarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarData.swift; sourceTree = "<group>"; };
+		CA02F4232B3A2D640032EC50 /* SegueTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueTestViewController.swift; sourceTree = "<group>"; };
+		CA02F4252B3AA45E0032EC50 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
+		CA02F4292B3AAD070032EC50 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		CA02F42B2B3AB1EC0032EC50 /* MeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
+		CA02F42D2B3AB2000032EC50 /* ReportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewModel.swift; sourceTree = "<group>"; };
+		CA02F42F2B3AB2130032EC50 /* PremiumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +106,7 @@
 				CA02F4142B3406FD0032EC50 /* MeViewController.swift */,
 				CA02F40A2B3266220032EC50 /* DiaryViewController.swift */,
 				CA02F4222B3855580032EC50 /* Extensions */,
+				CA02F4232B3A2D640032EC50 /* SegueTestViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -102,6 +115,11 @@
 			isa = PBXGroup;
 			children = (
 				CA02F4182B381A060032EC50 /* TabBarViewModel.swift */,
+				CA02F4252B3AA45E0032EC50 /* DiaryViewModel.swift */,
+				CA02F4292B3AAD070032EC50 /* HomeViewModel.swift */,
+				CA02F42B2B3AB1EC0032EC50 /* MeViewModel.swift */,
+				CA02F42D2B3AB2000032EC50 /* ReportsViewModel.swift */,
+				CA02F42F2B3AB2130032EC50 /* PremiumViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -205,13 +223,19 @@
 				CA02F4212B3820A30032EC50 /* TabBarData.swift in Sources */,
 				CA02F4192B381A060032EC50 /* TabBarViewModel.swift in Sources */,
 				CA02F4132B3400FD0032EC50 /* ReportsViewController.swift in Sources */,
+				CA02F4302B3AB2130032EC50 /* PremiumViewModel.swift in Sources */,
+				CA02F4242B3A2D640032EC50 /* SegueTestViewController.swift in Sources */,
 				CA02F4172B3505E10032EC50 /* GeneralExtensions.swift in Sources */,
 				CA02F40D2B3266CA0032EC50 /* PremiumViewController.swift in Sources */,
 				CA02F4152B3406FD0032EC50 /* MeViewController.swift in Sources */,
+				CA02F42E2B3AB2000032EC50 /* ReportsViewModel.swift in Sources */,
 				CA02F40B2B3266220032EC50 /* DiaryViewController.swift in Sources */,
 				CA02F40F2B327E960032EC50 /* TabBarController.swift in Sources */,
+				CA02F42C2B3AB1EC0032EC50 /* MeViewModel.swift in Sources */,
 				CA02F3F72B324A370032EC50 /* AppDelegate.swift in Sources */,
 				CA02F3F92B324A370032EC50 /* SceneDelegate.swift in Sources */,
+				CA02F4262B3AA45F0032EC50 /* DiaryViewModel.swift in Sources */,
+				CA02F42A2B3AAD070032EC50 /* HomeViewModel.swift in Sources */,
 				CA02F4112B33F8730032EC50 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,11 +10,20 @@ import UIKit
 class MeViewController: UIViewController {
     
     let meDetailsView = UIView()
+    let navBarTop = UIView()
+    let segueButton = UIButton()
+    let navigationBar = UINavigationBar()
+    let viewModel = MeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        setUpNavigationBar()
         setUpMeDetailsView()
+    }
+    
+    private func setUpNavigationBar(){
+        viewModel.setUpNavigationBar(view: view, navigationBar: navigationBar)
+        viewModel.setUpNavBarTop(navBarTop: navBarTop, view: view, navigationBar: navigationBar)
     }
     
     private func setUpMeDetailsView(){
@@ -22,7 +31,7 @@ class MeViewController: UIViewController {
         meDetailsView.backgroundColor = .orange
         
         // Setup Constraints for meDetailsView
-        setUpDetailsViewConstraints(detailsView: meDetailsView, parentView: view)
-    }
+        
+        setUpDetailsViewConstraintsNav(detailsView: meDetailsView, parentView: view, navigationBar: navigationBar)    }
    
 }

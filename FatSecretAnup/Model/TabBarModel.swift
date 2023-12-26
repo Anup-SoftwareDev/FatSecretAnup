@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 struct TabBarItems {
-        var controller: UINavigationController
+        //var controller: UINavigationController
+        var controller: UIViewController
         var image: String
         var title: String
 }
