@@ -33,6 +33,4 @@ class HomeViewController: UIViewController {
         setUpDetailsViewConstraintsNav(detailsView: homeDetailsView, parentView: view, navigationBar: navigationBar)
         
     }
-    
-    
 }

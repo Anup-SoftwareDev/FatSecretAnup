@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "5AE65898-BABE-48B5-BC0D-C3740440F0F4_4_5005_c.jpeg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
