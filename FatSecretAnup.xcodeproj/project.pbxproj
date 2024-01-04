@@ -21,7 +21,6 @@
 		CA02F4192B381A060032EC50 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4182B381A060032EC50 /* TabBarViewModel.swift */; };
 		CA02F41E2B38200D0032EC50 /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F41D2B38200D0032EC50 /* TabBarModel.swift */; };
 		CA02F4212B3820A30032EC50 /* TabBarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4202B3820A30032EC50 /* TabBarData.swift */; };
-		CA02F4242B3A2D640032EC50 /* SegueTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4232B3A2D640032EC50 /* SegueTestViewController.swift */; };
 		CA02F4262B3AA45F0032EC50 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4252B3AA45E0032EC50 /* DiaryViewModel.swift */; };
 		CA02F42A2B3AAD070032EC50 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4292B3AAD070032EC50 /* HomeViewModel.swift */; };
 		CA02F42C2B3AB1EC0032EC50 /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F42B2B3AB1EC0032EC50 /* MeViewModel.swift */; };
@@ -29,7 +28,8 @@
 		CA02F4302B3AB2130032EC50 /* PremiumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F42F2B3AB2130032EC50 /* PremiumViewModel.swift */; };
 		CA02F4E32B41A2BA0032EC50 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4E22B41A2BA0032EC50 /* CustomCollectionViewCell.swift */; };
 		CA02F4E72B4289E50032EC50 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */; };
-		CA02F52B2B43DB160032EC50 /* SpareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F52A2B43DB150032EC50 /* SpareVC.swift */; };
+		CAC7EB7C2B4432050044FB96 /* DiaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC7EB7B2B4432050044FB96 /* DiaryData.swift */; };
+		CAC7EB7E2B456AEE0044FB96 /* PremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +49,6 @@
 		CA02F4182B381A060032EC50 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		CA02F41D2B38200D0032EC50 /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
 		CA02F4202B3820A30032EC50 /* TabBarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarData.swift; sourceTree = "<group>"; };
-		CA02F4232B3A2D640032EC50 /* SegueTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueTestViewController.swift; sourceTree = "<group>"; };
 		CA02F4252B3AA45E0032EC50 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		CA02F4292B3AAD070032EC50 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CA02F42B2B3AB1EC0032EC50 /* MeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
@@ -57,7 +56,8 @@
 		CA02F42F2B3AB2130032EC50 /* PremiumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewModel.swift; sourceTree = "<group>"; };
 		CA02F4E22B41A2BA0032EC50 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		CA02F52A2B43DB150032EC50 /* SpareVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpareVC.swift; sourceTree = "<group>"; };
+		CAC7EB7B2B4432050044FB96 /* DiaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryData.swift; sourceTree = "<group>"; };
+		CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,9 +113,8 @@
 				CA02F4142B3406FD0032EC50 /* MeViewController.swift */,
 				CA02F40A2B3266220032EC50 /* DiaryViewController.swift */,
 				CA02F4222B3855580032EC50 /* Extensions */,
-				CA02F4232B3A2D640032EC50 /* SegueTestViewController.swift */,
 				CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */,
-				CA02F52A2B43DB150032EC50 /* SpareVC.swift */,
+				CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				CA02F4202B3820A30032EC50 /* TabBarData.swift */,
+				CAC7EB7B2B4432050044FB96 /* DiaryData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -232,16 +232,16 @@
 				CA02F4212B3820A30032EC50 /* TabBarData.swift in Sources */,
 				CA02F4192B381A060032EC50 /* TabBarViewModel.swift in Sources */,
 				CA02F4E72B4289E50032EC50 /* CustomTableViewCell.swift in Sources */,
+				CAC7EB7E2B456AEE0044FB96 /* PremiumTableViewCell.swift in Sources */,
 				CA02F4132B3400FD0032EC50 /* ReportsViewController.swift in Sources */,
 				CA02F4302B3AB2130032EC50 /* PremiumViewModel.swift in Sources */,
-				CA02F4242B3A2D640032EC50 /* SegueTestViewController.swift in Sources */,
 				CA02F4E32B41A2BA0032EC50 /* CustomCollectionViewCell.swift in Sources */,
 				CA02F4172B3505E10032EC50 /* GeneralExtensions.swift in Sources */,
 				CA02F40D2B3266CA0032EC50 /* PremiumViewController.swift in Sources */,
 				CA02F4152B3406FD0032EC50 /* MeViewController.swift in Sources */,
 				CA02F42E2B3AB2000032EC50 /* ReportsViewModel.swift in Sources */,
 				CA02F40B2B3266220032EC50 /* DiaryViewController.swift in Sources */,
-				CA02F52B2B43DB160032EC50 /* SpareVC.swift in Sources */,
+				CAC7EB7C2B4432050044FB96 /* DiaryData.swift in Sources */,
 				CA02F40F2B327E960032EC50 /* TabBarController.swift in Sources */,
 				CA02F42C2B3AB1EC0032EC50 /* MeViewModel.swift in Sources */,
 				CA02F3F72B324A370032EC50 /* AppDelegate.swift in Sources */,

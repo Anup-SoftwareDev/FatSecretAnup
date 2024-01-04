@@ -7,5 +7,5 @@
 
 import Foundation
 
-var images = ["house", "person", "fork.knife", "chart.bar.xaxis","lock"]
+var images = ["house", "person", "fork.knife", "chart.bar.xaxis","medal.fill"]
 var titles = [ "Home", "Me", "Diary", "Reports","Premium" ]

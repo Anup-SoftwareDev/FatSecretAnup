@@ -1,25 +1,20 @@
-//
-//  DiaryViewController.swift
-//  FatSecretAnup
-//
-//  Created by Anup Kuriakose on 20/12/2023.
-//
 
 import UIKit
 
 class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
-    let diaryDetailsView = UIView()
-    let navBarTop = UIView()
-    let navigationBar = UINavigationBar()
+    //let diaryDetailsView = UIView()
     let viewModel = DiaryViewModel()
     private var autoScrollTimer: Timer?
     private var isCollapsed = false
     private var collectionViewHeightConstraint: NSLayoutConstraint!
-    let items = [("Breakfast", "balanced"), ("Lunch", "balanced"), ("Dinner", "balanced"),("Snacks/Other", "balanced"), ("CustomMeals", "balanced"), ("Water Tracker", "balanced"), ("Add Exercise/Sleep", "balanced"), ("Item 2", "balanced"), ("Item 3", "balanced")]
     private var tableViewHeightConstraint: NSLayoutConstraint?
     
     // MARK: - UI Components
+    let navBarTop = UIView()
+    
+    let navigationBar = UINavigationBar()
+    
     private let scrollView = UIScrollView()
     
     private var collapseButton = UIButton()
@@ -29,7 +24,6 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemGray5
-        
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
@@ -58,8 +52,10 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         let tableView = UITableView()
         tableView.backgroundColor = .systemGray5
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
-        tableView.rowHeight = 100
+        tableView.register(PremiumTableViewCell.self, forCellReuseIdentifier: PremiumTableViewCell.identifier)
+        //tableView.rowHeight = 68
         tableView.separatorStyle = .none
+        //tableView.isScrollEnabled = false
         return tableView
         }()
     
@@ -76,21 +72,23 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         setUpBorderView()
         setUpsummaryDetailView()
         setUpTableView()
+        updateTableViewHeight()
     }
     
     override func viewDidLayoutSubviews() {
             super.viewDidLayoutSubviews()
+            
             viewModel.scrollToMiddle(collectionView: collectionView)
+            updateTableViewHeight()
     }
     
     override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
             updateTableViewHeight()
-            //collectionView.reloadData()
-                    if !isCollapsed{
+            if !isCollapsed{
                 startAutoScrolling()
             }
-        }
+    }
 
     override func viewWillDisappear(_ animated: Bool) {
             super.viewWillDisappear(animated)
@@ -134,12 +132,12 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     private func setUpBorderView() {
-        viewModel.setUpViews(parentView: view, scrollView: scrollView, childView: borderView, topAnchorConstraint: collapseButton.bottomAnchor, topAnchorConstant: 15, heightAnchorConstant: 1)
+        viewModel.setUpViews(parentView: view, scrollView: scrollView, childView: borderView, topAnchorConstraint: collapseButton.bottomAnchor, topAnchorConstant: 10, heightAnchorConstant: 1)
         
     }
     
     private func setUpsummaryDetailView(){
-        viewModel.setUpViews(parentView: view,scrollView: scrollView, childView: summaryView, topAnchorConstraint: borderView.bottomAnchor, topAnchorConstant: 0, heightAnchorConstant: 80)
+        viewModel.setUpViews(parentView: view,scrollView: scrollView, childView: summaryView, topAnchorConstraint: borderView.bottomAnchor, topAnchorConstant: 0, heightAnchorConstant: 75)
     }
     
     private func setUpTableView(){
@@ -158,7 +156,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
             // Calculate total height of the table view content
             let totalHeight = tableView.contentSize.height
             tableViewHeightConstraint?.constant = totalHeight
-
+            print("totalHeight: \(totalHeight)")
             // Refresh layout
             view.layoutIfNeeded()
         }
@@ -210,12 +208,13 @@ extension DiaryViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell else {
-            fatalError("Failed to dequeue CustomCollectionViewCell in HomeController.")
-        }
-        let image = viewModel.images[indexPath.row]
-        cell.configure(with: image)
-        return cell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell else {
+                fatalError("Failed to dequeue CustomCollectionViewCell in HomeController.")
+            }
+            let image = viewModel.images[indexPath.row]
+            cell.configure(with: image)
+            return cell
+    
     }
 }
 
@@ -237,20 +236,34 @@ extension DiaryViewController: UICollectionViewDelegateFlowLayout {
 extension DiaryViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return tableData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
+        if indexPath.row == 4 || indexPath.row == 5 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: PremiumTableViewCell.identifier, for: indexPath) as! PremiumTableViewCell
+                cell.customLabel.text = mealNames[indexPath.row]
+                cell.customImageView.image = mealsImages[indexPath.row]
+                cell.descriptionLabel.text =  indexPath.row == 5 ? "Track your daily hydration goals" : "Track more than the main meals"
+            return cell
 
-        let (labelText, imageName) = items[indexPath.row]
-
-        cell.customLabel.text = labelText
-        cell.customImageView.image = UIImage(named: imageName)
-        cell.customButton.setTitle("Button", for: .normal)
-
-        // You can add target actions for the button here if needed
-
-        return cell
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
+                cell.customLabel.text = mealNames[indexPath.row]
+                cell.customImageView.image = mealsImages[indexPath.row]
+                cell.itemsView.backgroundColor = indexPath.row == 6 ? .systemGray5 : .white
+                cell.plusImageView.isHidden = indexPath.row == 6
+                cell.customLabel.font = indexPath.row == 6 ? UIFont.systemFont(ofSize: 20, weight: .regular): UIFont.systemFont(ofSize: 20, weight: .semibold)
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(rowHeights[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You clicked \(tableData[indexPath.row])")
     }
 }

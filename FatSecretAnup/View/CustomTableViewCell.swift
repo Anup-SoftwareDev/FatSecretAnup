@@ -4,16 +4,15 @@ class CustomTableViewCell: UITableViewCell {
     
     static let identifier = "CustomTableViewCell"
     
-    let itemsView: UIView = {
+    var itemsView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
-        view.layer.cornerRadius = 10
-        // Assuming you have a UIView named 'customView' inside your UITableViewCell
-        view.layer.shadowColor = UIColor.systemGray3.cgColor
-        view.layer.shadowOpacity = 0.8 // Adjust the opacity as needed
-        view.layer.shadowOffset = CGSize(width: 0, height: 5) // Adjust the offset as needed
-        view.layer.shadowRadius = 15 // Adjust the radius as needed
+        view.layer.cornerRadius = 7
+        view.layer.shadowColor = UIColor.systemGray.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 15 
         view.layer.masksToBounds = false
         return view
     }()
@@ -23,63 +22,81 @@ class CustomTableViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
+    
+    let plusImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = plusImg
+        return imageView
+    }()
+    
+    let customPlusImageView: UIImageView = {
+            let imageView = UIImageView()
+            imageView.image = plusImg
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            return imageView
+    }()
+    
     let customLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-    let customButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Button", for: .normal)
-        button.backgroundColor = .gray
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
+    
+ 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .systemGray5
-        
+        setUpSubViews()
+        setUpItemsViewConstraints()
+        setUpCustomImageViewConstraints()
+        setUpLabelConstraints()
+        setUpPlusImageConstraints()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setUpSubViews() {
         contentView.addSubview(itemsView)
         itemsView.addSubview(customImageView)
         itemsView.addSubview(customLabel)
-        itemsView.addSubview(customButton)
-        
-        // Configure constraints for the image view
+        itemsView.addSubview(plusImageView)
+    }
+    
+    private func setUpItemsViewConstraints(){
         NSLayoutConstraint.activate([
             itemsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             itemsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             itemsView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             itemsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
         ])
-        
-
+    }
+    
+    private func setUpCustomImageViewConstraints(){
         // Configure constraints for the image view
         NSLayoutConstraint.activate([
             customImageView.leadingAnchor.constraint(equalTo: itemsView.leadingAnchor, constant: 16),
             customImageView.centerYAnchor.constraint(equalTo: itemsView.centerYAnchor),
-            customImageView.widthAnchor.constraint(equalToConstant: 40),
-            customImageView.heightAnchor.constraint(equalToConstant: 40)
+            customImageView.heightAnchor.constraint(equalTo: itemsView.heightAnchor, multiplier: 1.6/3.0),
+            customImageView.widthAnchor.constraint(equalTo: itemsView.heightAnchor, multiplier: 1.6/3.0)
         ])
-
-        // Configure constraints for the label
+    }
+    
+    private func setUpLabelConstraints(){
         NSLayoutConstraint.activate([
             customLabel.leadingAnchor.constraint(equalTo: customImageView.trailingAnchor, constant: 16),
             customLabel.centerYAnchor.constraint(equalTo: itemsView.centerYAnchor)
         ])
-
-        // Configure constraints for the button
-        NSLayoutConstraint.activate([
-            customButton.trailingAnchor.constraint(equalTo: itemsView.trailingAnchor, constant: -16),
-            customButton.centerYAnchor.constraint(equalTo: itemsView.centerYAnchor),
-            customButton.widthAnchor.constraint(equalToConstant: 80)
-        ])
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    private func setUpPlusImageConstraints(){
+        NSLayoutConstraint.activate([
+            plusImageView.trailingAnchor.constraint(equalTo: itemsView.trailingAnchor, constant: -16),
+            plusImageView.centerYAnchor.constraint(equalTo: itemsView.centerYAnchor),
+            plusImageView.heightAnchor.constraint(equalTo: itemsView.heightAnchor, multiplier: 1.5/3.0),
+            plusImageView.widthAnchor.constraint(equalTo: itemsView.heightAnchor, multiplier: 1.5/3.0)
+        ])
     }
 }

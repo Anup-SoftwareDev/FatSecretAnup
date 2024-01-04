@@ -64,18 +64,6 @@ class DiaryViewModel {
         button.tintColor = .systemGray
     }
     
-//    func setupCollectionViewConstraints(view: UIView, collectionView: UICollectionView, navigationBar: UINavigationBar){
-//
-//        collectionView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            collectionView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: 0),
-//            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-//        ])
-//        collectionViewHeightConstraint = collectionView.heightAnchor.constraint(equalToConstant: 125)
-//        collectionViewHeightConstraint.isActive = true
-//    }
-    
     func setupCollectionViewConstraints(view: UIView, collectionView: UICollectionView, scrollView: UIScrollView){
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -84,29 +72,12 @@ class DiaryViewModel {
             collectionView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            //collectionView.heightAnchor.constraint(equalToConstant: 125),
             collectionView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
-//        NSLayoutConstraint.activate([
-//            collectionView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
-//            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            //collectionView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
-//            collectionView.heightAnchor.constraint(equalToConstant: 300)
-//        ])
+
         collectionViewHeightConstraint = collectionView.heightAnchor.constraint(equalToConstant: 130)
         collectionViewHeightConstraint.isActive = true
     }
-//    func setUpCollapseButtonConstraints(view: UIView, button: UIButton, collectionView: UICollectionView){
-//        view.addSubview(button)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.layer.cornerRadius = 10
-//
-//        NSLayoutConstraint.activate([
-//            button.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
-//            button.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
-//        ])
-//    }
     
     func setUpCollapseButtonConstraints(view: UIView, scrollView: UIScrollView, button: UIButton, collectionView: UICollectionView){
         scrollView.addSubview(button)
@@ -118,16 +89,6 @@ class DiaryViewModel {
             button.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
         ])
     }
-//    func setUpCollapseLabel(view: UIView, collapseLbl: UILabel, button: UIButton, isCollapsed: Bool){
-//        view.addSubview(collapseLbl)
-//        collapseLbl.translatesAutoresizingMaskIntoConstraints = false
-//        collapseLbl.text = isCollapsed ? "Explore Meal Plans" : "Collapse"
-//        NSLayoutConstraint.activate([
-//            collapseLbl.rightAnchor.constraint(equalTo: button.leftAnchor, constant: -5),
-//            collapseLbl.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-//            collapseLbl.heightAnchor.constraint(equalToConstant: 30)
-//        ])
-//    }
     
     func setUpCollapseLabel(scrollView: UIScrollView, collapseLbl: UILabel, button: UIButton, isCollapsed: Bool){
         scrollView.addSubview(collapseLbl)
@@ -139,16 +100,6 @@ class DiaryViewModel {
             collapseLbl.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
-//    func setUpViews(parentView: UIView, childView: UIView, topAnchorConstraint: NSLayoutAnchor<NSLayoutYAxisAnchor>, topAnchorConstant: CGFloat, heightAnchorConstant: CGFloat){
-//        parentView.addSubview(childView)
-//        childView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            childView.topAnchor.constraint(equalTo: topAnchorConstraint, constant: topAnchorConstant),
-//            childView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor),
-//            childView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor),
-//            childView.heightAnchor.constraint(equalToConstant: heightAnchorConstant)
-//        ])
-//    }
     
     func setUpViews(parentView: UIView, scrollView: UIScrollView, childView: UIView, topAnchorConstraint: NSLayoutAnchor<NSLayoutYAxisAnchor>, topAnchorConstant: CGFloat, heightAnchorConstant: CGFloat){
         scrollView.addSubview(childView)
@@ -160,24 +111,15 @@ class DiaryViewModel {
             childView.heightAnchor.constraint(equalToConstant: heightAnchorConstant)
         ])
     }
-//    func setUpTableViews(parentView: UIView, childView: UIView, topAnchorConstraint: NSLayoutAnchor<NSLayoutYAxisAnchor>, topAnchorConstant: CGFloat){
-//        parentView.addSubview(childView)
-//        childView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            childView.topAnchor.constraint(equalTo: topAnchorConstraint, constant: topAnchorConstant),
-//            childView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor),
-//            childView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor),
-//            childView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor)
-//        ])
-//    }
+
     
     func setUpTableViews(parentView: UIView, scrollView: UIScrollView, childView: UIView, topAnchorConstraint: NSLayoutAnchor<NSLayoutYAxisAnchor>, topAnchorConstant: CGFloat){
         scrollView.addSubview(childView)
         childView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             childView.topAnchor.constraint(equalTo: topAnchorConstraint, constant: topAnchorConstant),
-            childView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor),
-            childView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor),
+            childView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            childView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             childView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
     }
