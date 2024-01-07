@@ -82,7 +82,7 @@ class PremiumTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    // MARK: - OverrideInit
+    // MARK: - LifeCycle functions
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

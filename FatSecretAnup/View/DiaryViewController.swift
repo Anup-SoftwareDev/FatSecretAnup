@@ -3,7 +3,6 @@ import UIKit
 
 class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
-    //let diaryDetailsView = UIView()
     let viewModel = DiaryViewModel()
     private var autoScrollTimer: Timer?
     private var isCollapsed = false
@@ -53,9 +52,8 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.backgroundColor = .systemGray5
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
         tableView.register(PremiumTableViewCell.self, forCellReuseIdentifier: PremiumTableViewCell.identifier)
-        //tableView.rowHeight = 68
+        tableView.register(LinksTableViewCell.self, forCellReuseIdentifier: LinksTableViewCell.identifier)
         tableView.separatorStyle = .none
-        //tableView.isScrollEnabled = false
         return tableView
         }()
     
@@ -249,13 +247,18 @@ extension DiaryViewController {
 
         } else {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
+            if indexPath.row == 8 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: LinksTableViewCell.identifier, for: indexPath) as! LinksTableViewCell
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
                 cell.customLabel.text = mealNames[indexPath.row]
                 cell.customImageView.image = mealsImages[indexPath.row]
                 cell.itemsView.backgroundColor = indexPath.row == 6 ? .systemGray5 : .white
                 cell.plusImageView.isHidden = indexPath.row == 6
                 cell.customLabel.font = indexPath.row == 6 ? UIFont.systemFont(ofSize: 20, weight: .regular): UIFont.systemFont(ofSize: 20, weight: .semibold)
-            return cell
+                return cell
+            }
         }
     }
     

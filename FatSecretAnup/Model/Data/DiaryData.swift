@@ -20,8 +20,17 @@ let exerciseImg = UIImage(systemName: "figure.soccer")?.withTintColor(.systemGra
 let logoImg = UIImage(systemName: "medal.fill")?.withTintColor(.systemBrown, renderingMode: .alwaysOriginal)
 let xImg = UIImage(systemName: "multiply", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))?.withTintColor(.darkGray , renderingMode: .alwaysOriginal)
 
+
+// Links images
+
+let todayImg = UIImage(systemName: "chart.bar.xaxis")?.withTintColor(fatSecretGreen, renderingMode: .alwaysOriginal)
+let albumImg = UIImage(systemName: "photo")?.withTintColor(fatSecretGreen, renderingMode: .alwaysOriginal)
+let mealsImg = UIImage(systemName: "map")?.withTintColor(fatSecretGreen, renderingMode: .alwaysOriginal)
+let exportImg = UIImage(systemName: "arrow.up.doc")?.withTintColor(fatSecretGreen, renderingMode: .alwaysOriginal)
+let optionsImg = UIImage(systemName: "gearshape")?.withTintColor(fatSecretGreen, renderingMode: .alwaysOriginal)
+
 let tableData = [("Breakfast", "balanced"), ("Lunch", "balanced"), ("Dinner", "balanced"),("Snacks/Other", "balanced"), ("Custom Meals", "balanced"), ("Water Tracker", "balanced"), ("Add Exercise/Sleep", "balanced"), ("Item 2", "balanced"), ("Item 3", "balanced")]
 
 let mealNames = ["Breakfast", "Lunch", "Dinner", "Snacks/Other", "Custom Meals", "Water Tracker", "Add Exercise/Sleep", "Summary", "Graphs"]
 let mealsImages = [breakfastImg, lunchImg, dinnerImg, snacksImg, forknifeImg, waterDrop, exerciseImg, snacksImg, plusImg]
-let rowHeights = [68, 68, 68, 68, 90, 90, 68, 140, 180]
+let rowHeights = [68, 68, 68, 68, 90, 90, 68, 175, 225]

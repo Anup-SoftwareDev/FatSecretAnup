@@ -30,6 +30,8 @@
 		CA02F4E72B4289E50032EC50 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */; };
 		CAC7EB7C2B4432050044FB96 /* DiaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC7EB7B2B4432050044FB96 /* DiaryData.swift */; };
 		CAC7EB7E2B456AEE0044FB96 /* PremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */; };
+		CAC7EB802B46B2EB0044FB96 /* SummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC7EB7F2B46B2EB0044FB96 /* SummaryTableViewCell.swift */; };
+		CAC7EB822B46B3B30044FB96 /* LinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC7EB812B46B3B30044FB96 /* LinksTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		CAC7EB7B2B4432050044FB96 /* DiaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryData.swift; sourceTree = "<group>"; };
 		CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTableViewCell.swift; sourceTree = "<group>"; };
+		CAC7EB7F2B46B2EB0044FB96 /* SummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTableViewCell.swift; sourceTree = "<group>"; };
+		CAC7EB812B46B3B30044FB96 /* LinksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 				CA02F4222B3855580032EC50 /* Extensions */,
 				CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */,
 				CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */,
+				CAC7EB7F2B46B2EB0044FB96 /* SummaryTableViewCell.swift */,
+				CAC7EB812B46B3B30044FB96 /* LinksTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,12 +234,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAC7EB822B46B3B30044FB96 /* LinksTableViewCell.swift in Sources */,
 				CA02F41E2B38200D0032EC50 /* TabBarModel.swift in Sources */,
 				CA02F4212B3820A30032EC50 /* TabBarData.swift in Sources */,
 				CA02F4192B381A060032EC50 /* TabBarViewModel.swift in Sources */,
 				CA02F4E72B4289E50032EC50 /* CustomTableViewCell.swift in Sources */,
 				CAC7EB7E2B456AEE0044FB96 /* PremiumTableViewCell.swift in Sources */,
 				CA02F4132B3400FD0032EC50 /* ReportsViewController.swift in Sources */,
+				CAC7EB802B46B2EB0044FB96 /* SummaryTableViewCell.swift in Sources */,
 				CA02F4302B3AB2130032EC50 /* PremiumViewModel.swift in Sources */,
 				CA02F4E32B41A2BA0032EC50 /* CustomCollectionViewCell.swift in Sources */,
 				CA02F4172B3505E10032EC50 /* GeneralExtensions.swift in Sources */,
