@@ -12,6 +12,9 @@ class DiaryViewModel {
     
     var images: [UIImage] = []
     var collectionViewHeightConstraint: NSLayoutConstraint!
+    var BreakFastItems:[MealItems] = []
+    var caloryTarget = 2200
+    var isCollapsed = false
     
     // MARK: - viewDidLoad functions
     
@@ -86,7 +89,7 @@ class DiaryViewModel {
         
         NSLayoutConstraint.activate([
             button.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
-            button.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
+            button.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26),
         ])
     }
     
@@ -149,7 +152,6 @@ extension DiaryViewModel {
     
     func getCurrentIndexPath(collectionView: UICollectionView) -> IndexPath{
         let visibleCells = collectionView.indexPathsForVisibleItems.sorted()
-        print(visibleCells)
         return visibleCells[1] 
     }
     
@@ -165,9 +167,51 @@ extension DiaryViewModel {
             collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
     }
     
-    
     func calculateWidthCollectionItem(view: UIView) -> CGFloat{
-        print(view.frame.width/2)
         return view.frame.width/2
     }
+}
+
+// MARK: - Calory Computations
+
+extension DiaryViewModel {
+    
+    func totalCaloriesConsumed() -> Int {
+        var totalCalories = 0
+        BreakFastItems.forEach{item in totalCalories += item.calories}
+        return totalCalories
+    }
+    
+    func totalCaloriesRemaining() -> Int {
+        return caloryTarget - totalCaloriesConsumed()
+    }
+    
+    func totalCaloriesRemainingPercentage() -> Int {
+        return (totalCaloriesConsumed()*100/caloryTarget)
+    }
+}
+
+// MARK: - TableView UI computations
+extension DiaryViewModel {
+    
+    func mealsNotEmpty() -> Bool {
+        return BreakFastItems.count > 0
+    }
+    
+    func tableRowsCount() -> Int {
+        return(mealsNotEmpty() ? (isCollapsed ? 2 : BreakFastItems.count + 3) : 1)
+    }
+    
+    func toggleCollapseBtn () {
+        isCollapsed = !isCollapsed
+    }
+    
+    func deleteMealArrayItem(index: Int, option: Int){
+        option == 1 ? BreakFastItems.remove(at: index) : nil
+    }
+    
+    func mealNameFromIndex(index: Int) -> String{
+        return BreakFastItems[index].name
+    }
+ 
 }

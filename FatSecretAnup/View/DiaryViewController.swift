@@ -8,6 +8,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     private var isCollapsed = false
     private var collectionViewHeightConstraint: NSLayoutConstraint!
     private var tableViewHeightConstraint: NSLayoutConstraint?
+    var firstCellRowHeight = 90.0
     
     // MARK: - UI Components
     let navBarTop = UIView()
@@ -47,12 +48,51 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         return view
     }()
     
+    private let gridView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    private let calRemLbl: UILabel = {
+       let lbl = UILabel()
+        lbl.text = "Calories Remaining"
+        lbl.textColor = .black
+        lbl.font = UIFont.systemFont(ofSize: 18, weight: .light)
+        return lbl
+    }()
+    
+    private let calConsLbl: UILabel = {
+       let lbl = UILabel()
+        lbl.text = "Calories Consumed"
+        lbl.textColor = .black
+        lbl.font = UIFont.systemFont(ofSize: 18, weight: .light)
+        return lbl
+    }()
+    
+    private let calRemValLbl: UILabel = {
+       let lbl = UILabel()
+        lbl.text = "1985"
+        lbl.textColor = .systemGray
+        lbl.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        return lbl
+    }()
+    
+    private let calConsValLbl: UILabel = {
+       let lbl = UILabel()
+        lbl.text = "215"
+        lbl.textColor = .black
+        lbl.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        return lbl
+    }()
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemGray5
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
         tableView.register(PremiumTableViewCell.self, forCellReuseIdentifier: PremiumTableViewCell.identifier)
         tableView.register(LinksTableViewCell.self, forCellReuseIdentifier: LinksTableViewCell.identifier)
+        tableView.register(OuterTableViewCell.self, forCellReuseIdentifier: OuterTableViewCell.identifier)
+        tableView.register(SummaryDataTableViewCell.self, forCellReuseIdentifier: SummaryDataTableViewCell.identifier)
         tableView.separatorStyle = .none
         return tableView
         }()
@@ -75,9 +115,9 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLayoutSubviews() {
             super.viewDidLayoutSubviews()
-            
             viewModel.scrollToMiddle(collectionView: collectionView)
             updateTableViewHeight()
+        setUpGrid(result: viewModel.totalCaloriesRemainingPercentage())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -135,7 +175,63 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     private func setUpsummaryDetailView(){
-        viewModel.setUpViews(parentView: view,scrollView: scrollView, childView: summaryView, topAnchorConstraint: borderView.bottomAnchor, topAnchorConstant: 0, heightAnchorConstant: 75)
+        viewModel.setUpViews(parentView: view,scrollView: scrollView, childView: summaryView, topAnchorConstraint: borderView.bottomAnchor, topAnchorConstant: 0, heightAnchorConstant: 65)
+        summaryView.addSubview(gridView)
+        summaryView.addSubview(calRemLbl)
+        summaryView.addSubview(calConsLbl)
+        summaryView.addSubview(calRemValLbl)
+        summaryView.addSubview(calConsValLbl)
+        setUpGridView()
+        setUpCaLRemLbl()
+        setUpCaLConsLbl()
+        setUpCaLConsValLbl()
+        setUpCaLRemValLbl()
+    }
+    
+    private func setUpGridView() {
+        gridView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            gridView.heightAnchor.constraint(equalTo: summaryView.heightAnchor, multiplier: 1.3/2.0),
+            gridView.widthAnchor.constraint(equalTo: summaryView.heightAnchor, multiplier: 1.3/2.0),
+            gridView.leadingAnchor.constraint(equalTo: summaryView.leadingAnchor, constant: 20),
+            gridView.centerYAnchor.constraint(equalTo: summaryView.centerYAnchor)
+        ])
+    }
+    
+    private func setUpCaLRemLbl() {
+        calRemLbl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            calRemLbl.bottomAnchor.constraint(equalTo: summaryView.centerYAnchor),
+            calRemLbl.leadingAnchor.constraint(equalTo: gridView.trailingAnchor, constant: 16)
+        ])
+        
+    }
+    
+    private func setUpCaLConsLbl() {
+        calConsLbl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            calConsLbl.topAnchor.constraint(equalTo: summaryView.centerYAnchor),
+            calConsLbl.leadingAnchor.constraint(equalTo: gridView.trailingAnchor, constant: 16)
+        ])
+        
+    }
+    
+    private func setUpCaLConsValLbl() {
+        calConsValLbl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            calConsValLbl.topAnchor.constraint(equalTo: summaryView.centerYAnchor),
+            calConsValLbl.trailingAnchor.constraint(equalTo: summaryView.trailingAnchor, constant: -30)
+        ])
+        calConsValLbl.text = "\(viewModel.totalCaloriesConsumed())"
+    }
+    
+    private func setUpCaLRemValLbl() {
+        calRemValLbl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            calRemValLbl.bottomAnchor.constraint(equalTo: summaryView.centerYAnchor),
+            calRemValLbl.trailingAnchor.constraint(equalTo: summaryView.trailingAnchor, constant: -30)
+        ])
+        calRemValLbl.text = "\(viewModel.totalCaloriesRemaining())"
     }
     
     private func setUpTableView(){
@@ -154,7 +250,6 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
             // Calculate total height of the table view content
             let totalHeight = tableView.contentSize.height
             tableViewHeightConstraint?.constant = totalHeight
-            print("totalHeight: \(totalHeight)")
             // Refresh layout
             view.layoutIfNeeded()
         }
@@ -176,7 +271,27 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
-        
+    }
+    
+    private func setUpGrid(result: Int) {
+        let gridSize = 10
+        let blockSize: CGFloat = (gridView.frame.size.width - CGFloat((gridSize - 1)))/CGFloat(gridSize)
+        let spacing: CGFloat = 1         // Total grid size calculation
+        var value = result
+        for row in 0..<gridSize {
+            for column in 0..<gridSize {
+                let blockFrame = CGRect(
+                    x:  CGFloat(column) * (blockSize + spacing),
+                    y: -blockSize + CGFloat(gridSize - row) * (blockSize + spacing),
+                    width: blockSize,
+                    height: blockSize
+                )
+                value = value - 1
+                let blockView = UIView(frame: blockFrame)
+                blockView.backgroundColor = value >= 0 ? fatSecretGreen : .systemGray2
+                self.gridView.addSubview(blockView)
+            }
+        }
     }
     
     // MARK: - AutoScrolling functions
@@ -200,9 +315,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
 extension DiaryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(viewModel.images.count)
         return viewModel.images.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -212,7 +325,6 @@ extension DiaryViewController: UICollectionViewDelegate, UICollectionViewDataSou
             let image = viewModel.images[indexPath.row]
             cell.configure(with: image)
             return cell
-    
     }
 }
 
@@ -231,6 +343,8 @@ extension DiaryViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
+// MARK: - TableView Functions
+
 extension DiaryViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -238,35 +352,145 @@ extension DiaryViewController {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 4 || indexPath.row == 5 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: PremiumTableViewCell.identifier, for: indexPath) as! PremiumTableViewCell
-                cell.customLabel.text = mealNames[indexPath.row]
-                cell.customImageView.image = mealsImages[indexPath.row]
-                cell.descriptionLabel.text =  indexPath.row == 5 ? "Track your daily hydration goals" : "Track more than the main meals"
-            return cell
-
-        } else {
-            
-            if indexPath.row == 8 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: LinksTableViewCell.identifier, for: indexPath) as! LinksTableViewCell
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
-                cell.customLabel.text = mealNames[indexPath.row]
-                cell.customImageView.image = mealsImages[indexPath.row]
-                cell.itemsView.backgroundColor = indexPath.row == 6 ? .systemGray5 : .white
-                cell.plusImageView.isHidden = indexPath.row == 6
-                cell.customLabel.font = indexPath.row == 6 ? UIFont.systemFont(ofSize: 20, weight: .regular): UIFont.systemFont(ofSize: 20, weight: .semibold)
-                return cell
+        switch indexPath.row {
+            case 0:
+                return configureMealsTableViewCells(indexPath: indexPath)
+            case 4, 5:
+                return configurePremiumTableViewCells(indexPath: indexPath)
+            case 7:
+                return configureSummaryTableViewCells(indexPath: indexPath)
+            case 8:
+                return configureLinksTableViewCells(indexPath: indexPath)
+            default:
+                return configureCustomTableViewCells(indexPath: indexPath)
             }
-        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(rowHeights[indexPath.row])
+        return indexPath.row == 0 ? firstCellRowHeight : CGFloat(rowHeights[indexPath.row])
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You clicked \(tableData[indexPath.row])")
+    private func configurePremiumTableViewCells(indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: PremiumTableViewCell.identifier, for: indexPath) as! PremiumTableViewCell
+            cell.customLabel.text = mealNames[indexPath.row]
+            cell.customImageView.image = mealsImages[indexPath.row]
+            cell.descriptionLabel.text =  indexPath.row == 5 ? "Track your daily hydration goals" : "Track more than the main meals"
+        return cell
+    }
+    private func configureLinksTableViewCells(indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: LinksTableViewCell.identifier, for: indexPath) as! LinksTableViewCell
+        return cell
+    }
+    
+    private func configureSummaryTableViewCells(indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: SummaryDataTableViewCell.identifier, for: indexPath) as! SummaryDataTableViewCell
+        cell.viewModel =  viewModel
+        return cell
+    }
+    
+    private func configureMealsTableViewCells(indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: OuterTableViewCell.identifier, for: indexPath) as! OuterTableViewCell
+        cell.onHeightChanged = { [weak self, weak tableView] in
+                                    DispatchQueue.main.async {
+                                        tableView?.reloadRows(at: [indexPath], with: .none)
+                                    }
+                            }
+        cell.delegate = self
+        cell.viewController = self
+        cell.viewModel = viewModel
+        cell.configureCell()
+        self.firstCellRowHeight = cell.newHeight + 20.0
+        return cell
+    }
+    
+    private func configureCustomTableViewCells(indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
+        cell.customLabel.text = mealNames[indexPath.row]
+        cell.customImageView.image = mealsImages[indexPath.row]
+        cell.itemsView.backgroundColor = indexPath.row == 6 ? .systemGray5 : .white
+        cell.plusImageView.isHidden = indexPath.row == 6
+        cell.customLabel.font = indexPath.row == 6 ? UIFont.systemFont(ofSize: 20, weight: .regular): UIFont.systemFont(ofSize: 20, weight: .semibold)
+        return cell
+    }
+}
+
+// MARK: - OuterTableViewCellDelgate Protocol functions
+
+extension DiaryViewController: OuterTableViewCellDelegate {
+    
+    func cellDidTriggerAlert(index: Int) {
+        deleteMealAlert(index)
+    }
+    
+    func deleteMealAlert(_ index: Int) {
+        let alertController = UIAlertController(title: "Delete Meal", message: viewModel.mealNameFromIndex(index: index), preferredStyle: .alert)
+
+        let deleteAction = UIAlertAction(title: "Delete", style: .default) { _ in
+            self.handleDelete(index: index, option: 1)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { _ in
+            self.handleDelete(index: index, option: 2)
+        }
+        presentAlert(alertController: alertController, action1: deleteAction, action2: cancelAction)
+    }
+    
+    func handleDelete(index: Int, option: Int) {
+        viewModel.deleteMealArrayItem(index: index, option: option)
+        tableView.reloadData()
+        setUpCaLConsValLbl()
+        setUpCaLRemValLbl()
+    }
+}
+
+// MARK: - MealHeadingDelgate Protocol functions
+
+extension DiaryViewController: MealHeadingDelegate {
+    
+    func plusImageViewClicked() {
+        addMealAlert(title: "Meal Consumed", message: "Select Meal", optionOneTitle: "Milk", optionTwoTitle: "Egg Omelette")
+        }
+    
+
+    func addMealAlert (title: String, message: String, optionOneTitle: String, optionTwoTitle: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let optionOneAction = UIAlertAction(title: optionOneTitle, style: .default) { _ in
+            self.handleOption(1)
+        }
+        let optionTwoAction = UIAlertAction(title: optionTwoTitle, style: .default) { _ in
+            self.handleOption(2)
+        }
+        presentAlert(alertController: alertController, action1: optionOneAction, action2: optionTwoAction)
+    }
+    
+    func handleOption(_ value: Int) {
+        viewModel.BreakFastItems.append(mealItems[value - 1])
+        tableView.reloadData()
+        setUpCaLConsValLbl()
+        setUpCaLRemValLbl()
+    }
+    
+    private func presentAlert(alertController: UIAlertController, action1: UIAlertAction, action2: UIAlertAction){
+        alertController.addAction(action1)
+        alertController.addAction(action2)
+        present(alertController, animated: true)
+        
+    }
+}
+
+
+// MARK: - MealCountTableDelgate Protocol functions
+
+extension DiaryViewController: MealCountTableDelegate {
+    func collapseBtnClicked() {
+        tableView.reloadData()
+    }
+}
+
+// MARK: - MealFooterBtnDelegate Protocol functions
+
+extension DiaryViewController: MealFooterBtnDelegate {
+    func collapseBottomBtnClicked() {
+        tableView.reloadData()
     }
 }

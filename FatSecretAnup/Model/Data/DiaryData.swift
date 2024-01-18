@@ -30,7 +30,9 @@ let exportImg = UIImage(systemName: "arrow.up.doc")?.withTintColor(fatSecretGree
 let optionsImg = UIImage(systemName: "gearshape")?.withTintColor(fatSecretGreen, renderingMode: .alwaysOriginal)
 
 let tableData = [("Breakfast", "balanced"), ("Lunch", "balanced"), ("Dinner", "balanced"),("Snacks/Other", "balanced"), ("Custom Meals", "balanced"), ("Water Tracker", "balanced"), ("Add Exercise/Sleep", "balanced"), ("Item 2", "balanced"), ("Item 3", "balanced")]
-
+var mealItems:[MealItems] = [MealItems(name: "Milk", serving: "1 cup", calories: 122),MealItems(name: "Egg Omelette", serving: "1 large", calories: 93)]
 let mealNames = ["Breakfast", "Lunch", "Dinner", "Snacks/Other", "Custom Meals", "Water Tracker", "Add Exercise/Sleep", "Summary", "Graphs"]
 let mealsImages = [breakfastImg, lunchImg, dinnerImg, snacksImg, forknifeImg, waterDrop, exerciseImg, snacksImg, plusImg]
-let rowHeights = [68, 68, 68, 68, 90, 90, 68, 175, 225]
+let rowHeights = [90, 68, 68, 68, 90, 90, 68, 175, 225]
+
+
