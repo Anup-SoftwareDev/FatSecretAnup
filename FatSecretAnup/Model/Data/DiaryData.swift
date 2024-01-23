@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 
 
+// MARK: - Nav Bar Images
+let navTitleUpArrowImg = UIImage(systemName: "arrowtriangle.up.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+let navTitleDownArrowImg = UIImage(systemName: "arrowtriangle.down.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+let calendarImg = UIImage(systemName: "calendar", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))?.withTintColor(.white, renderingMode: .alwaysOriginal)
+let searchImg = UIImage(systemName: "magnifyingglass", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))?.withTintColor(.white, renderingMode: .alwaysOriginal)
+let dateImg = UIImage(systemName: "22.square", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))?.withTintColor(.white, renderingMode: .alwaysOriginal)
+
 let breakfastImg = UIImage(systemName: "sunrise.fill")?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
 let lunchImg = UIImage(systemName: "sun.max.fill")?.withTintColor(.systemCyan, renderingMode: .alwaysOriginal)
 let dinnerImg = UIImage(systemName: "sun.haze.fill")?.withTintColor(.systemOrange, renderingMode: .alwaysOriginal)

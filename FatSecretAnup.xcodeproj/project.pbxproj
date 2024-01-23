@@ -28,6 +28,7 @@
 		CA02F4302B3AB2130032EC50 /* PremiumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F42F2B3AB2130032EC50 /* PremiumViewModel.swift */; };
 		CA02F4E32B41A2BA0032EC50 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4E22B41A2BA0032EC50 /* CustomCollectionViewCell.swift */; };
 		CA02F4E72B4289E50032EC50 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */; };
+		CABD7CB52B5E1ADA00C0615F /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABD7CB42B5E1ADA00C0615F /* CustomNavigationBar.swift */; };
 		CAC7EB7C2B4432050044FB96 /* DiaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC7EB7B2B4432050044FB96 /* DiaryData.swift */; };
 		CAC7EB7E2B456AEE0044FB96 /* PremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */; };
 		CAC7EB822B46B3B30044FB96 /* LinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC7EB812B46B3B30044FB96 /* LinksTableViewCell.swift */; };
@@ -64,6 +65,7 @@
 		CA02F42F2B3AB2130032EC50 /* PremiumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewModel.swift; sourceTree = "<group>"; };
 		CA02F4E22B41A2BA0032EC50 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		CABD7CB42B5E1ADA00C0615F /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		CAC7EB7B2B4432050044FB96 /* DiaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryData.swift; sourceTree = "<group>"; };
 		CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTableViewCell.swift; sourceTree = "<group>"; };
 		CAC7EB812B46B3B30044FB96 /* LinksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksTableViewCell.swift; sourceTree = "<group>"; };
@@ -121,23 +123,14 @@
 		CA02F41A2B381EED0032EC50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CABD7CB12B5DFB3F00C0615F /* DiaryViewController */,
 				CA02F40C2B3266CA0032EC50 /* PremiumViewController.swift */,
 				CA02F40E2B327E960032EC50 /* TabBarController.swift */,
 				CA02F4102B33F8730032EC50 /* HomeViewController.swift */,
 				CA02F4E22B41A2BA0032EC50 /* CustomCollectionViewCell.swift */,
 				CA02F4122B3400FD0032EC50 /* ReportsViewController.swift */,
 				CA02F4142B3406FD0032EC50 /* MeViewController.swift */,
-				CA02F40A2B3266220032EC50 /* DiaryViewController.swift */,
 				CA02F4222B3855580032EC50 /* Extensions */,
-				CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */,
-				CAC7EBCB2B4A9E680044FB96 /* MealCountTableViewCell.swift */,
-				CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */,
-				CAC7EB812B46B3B30044FB96 /* LinksTableViewCell.swift */,
-				CAC7EBC72B4A4F3D0044FB96 /* OuterTableViewCell.swift */,
-				CAC7EBC92B4A4F870044FB96 /* MealHeadingTableViewCell.swift */,
-				CAC7EBCD2B4AB8B50044FB96 /* MealFooterTableViewCell.swift */,
-				CAC7EBCF2B4B55F60044FB96 /* MealItemsTableViewCell.swift */,
-				CAC7EBF72B54B2370044FB96 /* SummaryDataTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +173,40 @@
 				CA02F4162B3505E10032EC50 /* GeneralExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CABD7CB12B5DFB3F00C0615F /* DiaryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CABD7CB42B5E1ADA00C0615F /* CustomNavigationBar.swift */,
+				CA02F40A2B3266220032EC50 /* DiaryViewController.swift */,
+				CABD7CB32B5E1A0100C0615F /* OuterTableViewCells */,
+				CABD7CB22B5E194C00C0615F /* InnerTableViewCells */,
+			);
+			path = DiaryViewController;
+			sourceTree = "<group>";
+		};
+		CABD7CB22B5E194C00C0615F /* InnerTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				CAC7EBC92B4A4F870044FB96 /* MealHeadingTableViewCell.swift */,
+				CAC7EBCD2B4AB8B50044FB96 /* MealFooterTableViewCell.swift */,
+				CAC7EBCB2B4A9E680044FB96 /* MealCountTableViewCell.swift */,
+				CAC7EBCF2B4B55F60044FB96 /* MealItemsTableViewCell.swift */,
+			);
+			path = InnerTableViewCells;
+			sourceTree = "<group>";
+		};
+		CABD7CB32B5E1A0100C0615F /* OuterTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */,
+				CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */,
+				CAC7EBF72B54B2370044FB96 /* SummaryDataTableViewCell.swift */,
+				CAC7EB812B46B3B30044FB96 /* LinksTableViewCell.swift */,
+				CAC7EBC72B4A4F3D0044FB96 /* OuterTableViewCell.swift */,
+			);
+			path = OuterTableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +303,7 @@
 				CA02F42C2B3AB1EC0032EC50 /* MeViewModel.swift in Sources */,
 				CA02F3F72B324A370032EC50 /* AppDelegate.swift in Sources */,
 				CA02F3F92B324A370032EC50 /* SceneDelegate.swift in Sources */,
+				CABD7CB52B5E1ADA00C0615F /* CustomNavigationBar.swift in Sources */,
 				CA02F4262B3AA45F0032EC50 /* DiaryViewModel.swift in Sources */,
 				CAC7EBC82B4A4F3D0044FB96 /* OuterTableViewCell.swift in Sources */,
 				CA02F42A2B3AAD070032EC50 /* HomeViewModel.swift in Sources */,
