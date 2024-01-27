@@ -12,9 +12,12 @@ class DiaryViewModel {
     
     var images: [UIImage] = []
     var collectionViewHeightConstraint: NSLayoutConstraint!
+    var calendarHeightConstraint: NSLayoutConstraint!
     var BreakFastItems:[MealItems] = []
     var caloryTarget = 2200
     var isCollapsed = false
+    var calendarIsHidden = true
+    
     
     // MARK: - viewDidLoad functions
     
@@ -28,13 +31,8 @@ class DiaryViewModel {
             images.append(UIImage(named: "vegetarian")!)
         }
     }
-    
-    func setUpNavigationBar(view: UIView, navigationBar: UINavigationBar, navBarTop: UIView){
-        
-        setUpNavigationBar(view: view, navigationBar: navigationBar)
-        setUpNavBarTop(navBarTop: navBarTop, view: view, navigationBar: navigationBar)
-    }
-    func setUpNavBarTop(navBarTop: UIView, view: UIView, navigationBar: UINavigationBar){
+
+    func setUpNavBarTop(navBarTop: UIView, view: UIView, navigationBar: CustomNavigationBar){
         view.addSubview(navBarTop)
         navBarTop.backgroundColor = fatSecretGreen
         navBarTop.translatesAutoresizingMaskIntoConstraints = false
@@ -46,18 +44,21 @@ class DiaryViewModel {
         ])
     }
     
-    func setUpNavigationBar(view: UIView, navigationBar: UINavigationBar){
+    func setUpNavBar(navBarTop: UIView, view: UIView, navigationBar: CustomNavigationBar){
         view.addSubview(navigationBar)
-        navigationBar.barTintColor = fatSecretGreen
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         ])
-        let navigationItem = UINavigationItem(title: "Diary")
-        navigationBar.setItems([navigationItem], animated: false)
-        
+    }
+    func currentDate() -> String {
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMM d"
+        let dateString = formatter.string(from: currentDate)
+        return dateString
     }
     
     func setUpCollapseButtonAppearance(button: UIButton, isCollapsed: Bool){
@@ -67,7 +68,21 @@ class DiaryViewModel {
         button.tintColor = .systemGray
     }
     
-    func setupCollectionViewConstraints(view: UIView, collectionView: UICollectionView, scrollView: UIScrollView){
+    //func setupCalendarViewConstraints(calendarView: UIView, scrollView: UIScrollView){
+    func setupCalendarViewConstraints(calendarView: UIView, navigationBar: CustomNavigationBar, view: UIView){
+        NSLayoutConstraint.activate([
+            calendarView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
+            calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            calendarView.widthAnchor.constraint(equalTo: view.widthAnchor),
+        ])
+
+        //calendarHeightConstraint = calendarView.heightAnchor.constraint(equalToConstant: calendarIsHidden ? 0 : 300)
+        calendarHeightConstraint = calendarView.heightAnchor.constraint(equalToConstant: 0)
+        calendarHeightConstraint.isActive = true
+    }
+    
+    func setupCollectionViewConstraints(collectionView: UICollectionView, scrollView: UIScrollView){
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         

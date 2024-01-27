@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A17248BB295EAC63B449EFC7 /* Pods_FatSecretAnup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5589ABC49FD2FB2B16A100 /* Pods_FatSecretAnup.framework */; };
 		CA02F3F72B324A370032EC50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F3F62B324A370032EC50 /* AppDelegate.swift */; };
 		CA02F3F92B324A370032EC50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F3F82B324A370032EC50 /* SceneDelegate.swift */; };
 		CA02F4002B324A390032EC50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA02F3FF2B324A390032EC50 /* Assets.xcassets */; };
@@ -28,6 +29,8 @@
 		CA02F4302B3AB2130032EC50 /* PremiumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F42F2B3AB2130032EC50 /* PremiumViewModel.swift */; };
 		CA02F4E32B41A2BA0032EC50 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4E22B41A2BA0032EC50 /* CustomCollectionViewCell.swift */; };
 		CA02F4E72B4289E50032EC50 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */; };
+		CA8C5BF02B5F890300F35165 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C5BEF2B5F890300F35165 /* CalendarView.swift */; };
+		CABD7CB52B5E1ADA00C0615F /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABD7CB42B5E1ADA00C0615F /* CustomNavigationBar.swift */; };
 		CAC7EB7C2B4432050044FB96 /* DiaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC7EB7B2B4432050044FB96 /* DiaryData.swift */; };
 		CAC7EB7E2B456AEE0044FB96 /* PremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */; };
 		CAC7EB822B46B3B30044FB96 /* LinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC7EB812B46B3B30044FB96 /* LinksTableViewCell.swift */; };
@@ -41,6 +44,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		269E2490A360DDAC8B6DAF05 /* Pods-FatSecretAnup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FatSecretAnup.debug.xcconfig"; path = "Target Support Files/Pods-FatSecretAnup/Pods-FatSecretAnup.debug.xcconfig"; sourceTree = "<group>"; };
+		2F5589ABC49FD2FB2B16A100 /* Pods_FatSecretAnup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FatSecretAnup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63880CC1257538AE5A34407D /* Pods-FatSecretAnup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FatSecretAnup.release.xcconfig"; path = "Target Support Files/Pods-FatSecretAnup/Pods-FatSecretAnup.release.xcconfig"; sourceTree = "<group>"; };
 		CA02F3F32B324A370032EC50 /* FatSecretAnup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FatSecretAnup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA02F3F62B324A370032EC50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA02F3F82B324A370032EC50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +70,8 @@
 		CA02F42F2B3AB2130032EC50 /* PremiumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewModel.swift; sourceTree = "<group>"; };
 		CA02F4E22B41A2BA0032EC50 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		CA8C5BEF2B5F890300F35165 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		CABD7CB42B5E1ADA00C0615F /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		CAC7EB7B2B4432050044FB96 /* DiaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryData.swift; sourceTree = "<group>"; };
 		CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTableViewCell.swift; sourceTree = "<group>"; };
 		CAC7EB812B46B3B30044FB96 /* LinksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksTableViewCell.swift; sourceTree = "<group>"; };
@@ -81,17 +89,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A17248BB295EAC63B449EFC7 /* Pods_FatSecretAnup.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8177721CC8D63CE7BCAD6B04 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				269E2490A360DDAC8B6DAF05 /* Pods-FatSecretAnup.debug.xcconfig */,
+				63880CC1257538AE5A34407D /* Pods-FatSecretAnup.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CA02F3EA2B324A370032EC50 = {
 			isa = PBXGroup;
 			children = (
 				CA02F3F52B324A370032EC50 /* FatSecretAnup */,
 				CA02F3F42B324A370032EC50 /* Products */,
+				8177721CC8D63CE7BCAD6B04 /* Pods */,
+				D52DBFC48049E803807ECEA5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,23 +141,14 @@
 		CA02F41A2B381EED0032EC50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CABD7CB12B5DFB3F00C0615F /* DiaryViewController */,
 				CA02F40C2B3266CA0032EC50 /* PremiumViewController.swift */,
 				CA02F40E2B327E960032EC50 /* TabBarController.swift */,
 				CA02F4102B33F8730032EC50 /* HomeViewController.swift */,
 				CA02F4E22B41A2BA0032EC50 /* CustomCollectionViewCell.swift */,
 				CA02F4122B3400FD0032EC50 /* ReportsViewController.swift */,
 				CA02F4142B3406FD0032EC50 /* MeViewController.swift */,
-				CA02F40A2B3266220032EC50 /* DiaryViewController.swift */,
 				CA02F4222B3855580032EC50 /* Extensions */,
-				CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */,
-				CAC7EBCB2B4A9E680044FB96 /* MealCountTableViewCell.swift */,
-				CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */,
-				CAC7EB812B46B3B30044FB96 /* LinksTableViewCell.swift */,
-				CAC7EBC72B4A4F3D0044FB96 /* OuterTableViewCell.swift */,
-				CAC7EBC92B4A4F870044FB96 /* MealHeadingTableViewCell.swift */,
-				CAC7EBCD2B4AB8B50044FB96 /* MealFooterTableViewCell.swift */,
-				CAC7EBCF2B4B55F60044FB96 /* MealItemsTableViewCell.swift */,
-				CAC7EBF72B54B2370044FB96 /* SummaryDataTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +193,49 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		CABD7CB12B5DFB3F00C0615F /* DiaryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CABD7CB42B5E1ADA00C0615F /* CustomNavigationBar.swift */,
+				CA8C5BEF2B5F890300F35165 /* CalendarView.swift */,
+				CA02F40A2B3266220032EC50 /* DiaryViewController.swift */,
+				CABD7CB32B5E1A0100C0615F /* OuterTableViewCells */,
+				CABD7CB22B5E194C00C0615F /* InnerTableViewCells */,
+			);
+			path = DiaryViewController;
+			sourceTree = "<group>";
+		};
+		CABD7CB22B5E194C00C0615F /* InnerTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				CAC7EBC92B4A4F870044FB96 /* MealHeadingTableViewCell.swift */,
+				CAC7EBCD2B4AB8B50044FB96 /* MealFooterTableViewCell.swift */,
+				CAC7EBCB2B4A9E680044FB96 /* MealCountTableViewCell.swift */,
+				CAC7EBCF2B4B55F60044FB96 /* MealItemsTableViewCell.swift */,
+			);
+			path = InnerTableViewCells;
+			sourceTree = "<group>";
+		};
+		CABD7CB32B5E1A0100C0615F /* OuterTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				CA02F4E62B4289E50032EC50 /* CustomTableViewCell.swift */,
+				CAC7EB7D2B456AEE0044FB96 /* PremiumTableViewCell.swift */,
+				CAC7EBF72B54B2370044FB96 /* SummaryDataTableViewCell.swift */,
+				CAC7EB812B46B3B30044FB96 /* LinksTableViewCell.swift */,
+				CAC7EBC72B4A4F3D0044FB96 /* OuterTableViewCell.swift */,
+			);
+			path = OuterTableViewCells;
+			sourceTree = "<group>";
+		};
+		D52DBFC48049E803807ECEA5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F5589ABC49FD2FB2B16A100 /* Pods_FatSecretAnup.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -189,9 +243,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA02F4072B324A390032EC50 /* Build configuration list for PBXNativeTarget "FatSecretAnup" */;
 			buildPhases = (
+				477A06F0BDFFA2DF92607997 /* [CP] Check Pods Manifest.lock */,
 				CA02F3EF2B324A370032EC50 /* Sources */,
 				CA02F3F02B324A370032EC50 /* Frameworks */,
 				CA02F3F12B324A370032EC50 /* Resources */,
+				28DFC75ADFA3EF86B4064D5D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -247,6 +303,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		28DFC75ADFA3EF86B4064D5D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FatSecretAnup/Pods-FatSecretAnup-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FatSecretAnup/Pods-FatSecretAnup-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FatSecretAnup/Pods-FatSecretAnup-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		477A06F0BDFFA2DF92607997 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FatSecretAnup-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CA02F3EF2B324A370032EC50 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -264,6 +362,7 @@
 				CA02F4302B3AB2130032EC50 /* PremiumViewModel.swift in Sources */,
 				CA02F4E32B41A2BA0032EC50 /* CustomCollectionViewCell.swift in Sources */,
 				CAC7EBCE2B4AB8B50044FB96 /* MealFooterTableViewCell.swift in Sources */,
+				CA8C5BF02B5F890300F35165 /* CalendarView.swift in Sources */,
 				CAC7EBD22B4BE4F90044FB96 /* DiaryModel.swift in Sources */,
 				CAC7EBF82B54B2370044FB96 /* SummaryDataTableViewCell.swift in Sources */,
 				CA02F4172B3505E10032EC50 /* GeneralExtensions.swift in Sources */,
@@ -276,6 +375,7 @@
 				CA02F42C2B3AB1EC0032EC50 /* MeViewModel.swift in Sources */,
 				CA02F3F72B324A370032EC50 /* AppDelegate.swift in Sources */,
 				CA02F3F92B324A370032EC50 /* SceneDelegate.swift in Sources */,
+				CABD7CB52B5E1ADA00C0615F /* CustomNavigationBar.swift in Sources */,
 				CA02F4262B3AA45F0032EC50 /* DiaryViewModel.swift in Sources */,
 				CAC7EBC82B4A4F3D0044FB96 /* OuterTableViewCell.swift in Sources */,
 				CA02F42A2B3AAD070032EC50 /* HomeViewModel.swift in Sources */,
@@ -414,6 +514,7 @@
 		};
 		CA02F4082B324A390032EC50 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 269E2490A360DDAC8B6DAF05 /* Pods-FatSecretAnup.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -441,6 +542,7 @@
 		};
 		CA02F4092B324A390032EC50 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63880CC1257538AE5A34407D /* Pods-FatSecretAnup.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
