@@ -6,7 +6,8 @@ import UIKit
 class CalendarView: UIView{
     
     var calendar = FSCalendar()
-    var delegate: FSCalendarDelegate = DiaryViewController() as! FSCalendarDelegate
+    //var delegate: FSCalendarDelegate = DiaryViewController() as! FSCalendarDelegate
+    var delegate: FSCalendarDelegate?
     
     override init(frame: CGRect) {
             super.init(frame: frame)

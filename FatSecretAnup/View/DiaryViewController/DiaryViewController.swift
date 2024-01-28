@@ -522,8 +522,11 @@ extension DiaryViewController: OuterTableViewCellDelegate {
 extension DiaryViewController: MealHeadingDelegate {
     
     func plusImageViewClicked() {
-        addMealAlert(title: "Meal Consumed", message: "Select Meal", optionOneTitle: "Milk", optionTwoTitle: "Egg Omelette")
-        }
+        //addMealAlert(title: "Meal Consumed", message: "Select Meal", optionOneTitle: "Milk", optionTwoTitle: "Egg Omelette")
+        let foodSelectionViewController = FoodSelectionViewController()
+        foodSelectionViewController.modalPresentationStyle = .overFullScreen // or .fullScreen
+        present(foodSelectionViewController, animated: true)
+    }
 
     func addMealAlert (title: String, message: String, optionOneTitle: String, optionTwoTitle: String){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
