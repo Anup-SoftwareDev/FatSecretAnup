@@ -499,7 +499,6 @@ extension DiaryViewController: OuterTableViewCellDelegate {
     
     func deleteMealAlert(_ index: Int) {
         let alertController = UIAlertController(title: "Delete Meal", message: viewModel.mealNameFromIndex(index: index), preferredStyle: .alert)
-
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { _ in
             self.handleDelete(index: index, option: 1)
         }
@@ -621,18 +620,18 @@ extension DiaryViewController {
 extension DiaryViewController {
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-            if Calendar.current.isDateInToday(date) {
-                return .red
-            }
-            return nil
+        if Calendar.current.isDateInToday(date) {
+            return .red
         }
+        return nil
+    }
 
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-            if Calendar.current.isDateInToday(date) {
-                return .white
-            }
-            return nil
+        if Calendar.current.isDateInToday(date) {
+            return .white
         }
+        return nil
+    }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = date
@@ -643,7 +642,7 @@ extension DiaryViewController {
         dateToMonthFormat()
     }
     
-    func dateToMonthFormat(){
+    func dateToMonthFormat() {
         let currentMonthString = formatDate(date: calendar.currentPage, dateFormat: "MMMM")
         setUpNavigationTitle(dateString: currentMonthString)
     }
@@ -654,14 +653,13 @@ extension DiaryViewController {
         setUpNavigationTitle(dateString: formattedDateString)
     }
     
-    private func formatDate(date: Date, dateFormat: String) -> String{
+    private func formatDate(date: Date, dateFormat: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
-        let formatedString = dateFormatter.string(from: date)
-        return formatedString
+        return dateFormatter.string(from: date)
     }
     
-    private func setUpNavigationTitle(dateString: String){
+    private func setUpNavigationTitle(dateString: String) {
         navigationBar.date = dateString
         navigationBar.setUpNavigationItem()
     }
@@ -669,14 +667,11 @@ extension DiaryViewController {
 
 extension DiaryViewController: FoodSelectionViewControllerDelegate {
     func didUpdateFoodSelection(updatedData: [MealItems]) {
-        // Update your data source here
         self.viewModel.BreakFastItems = updatedData
-        // Reload the table view (if needed)
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.setUpCaLConsValLbl()
             self.setUpCaLRemValLbl()
         }
-        
     }
 }

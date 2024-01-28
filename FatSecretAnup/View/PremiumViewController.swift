@@ -22,8 +22,6 @@ class PremiumViewController: UIViewController {
     private func setUpPremiumDetailsView(){
         self.view.addSubview(premiumDetailsView)
         premiumDetailsView.backgroundColor = .systemGray4
-        
-        // Setup Constraints for premiumDetailsView
         setUpDetailsViewConstraintsNav(detailsView: premiumDetailsView, parentView: view, navigationBar: navigationBar)
     }
 

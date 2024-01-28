@@ -79,6 +79,4 @@ class CalendarView: UIView{
             // Print the current month or update your UI
             print("Current month: \(currentMonthString)")
         }
-
-
 }
