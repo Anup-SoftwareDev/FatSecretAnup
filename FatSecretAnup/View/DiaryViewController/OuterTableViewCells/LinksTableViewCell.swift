@@ -1,9 +1,3 @@
-//
-//  LinksTableViewCell.swift
-//  FatSecretAnup
-//
-//  Created by Anup Kuriakose on 4/1/2024.
-//
 
 import UIKit
 

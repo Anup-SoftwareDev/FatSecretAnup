@@ -76,8 +76,6 @@ class DiaryViewModel {
             calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             calendarView.widthAnchor.constraint(equalTo: view.widthAnchor),
         ])
-
-        //calendarHeightConstraint = calendarView.heightAnchor.constraint(equalToConstant: calendarIsHidden ? 0 : 300)
         calendarHeightConstraint = calendarView.heightAnchor.constraint(equalToConstant: 0)
         calendarHeightConstraint.isActive = true
     }
@@ -141,9 +139,6 @@ class DiaryViewModel {
             childView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
     }
-    
-    
-    
 }
 
 // MARK: - Collection View Automatic Scrolling functions

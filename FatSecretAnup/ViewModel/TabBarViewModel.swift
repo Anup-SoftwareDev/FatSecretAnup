@@ -36,7 +36,6 @@ class TabBarViewModel {
         if let image = UIImage(systemName: systemName) {
             navController.tabBarItem = UITabBarItem(title: title, image: image, tag: 0)
         }
-        //navController.viewControllers.first?.navigationItem.title = title
         navController.navigationItem.title = title
     }
     func addAvatar(){

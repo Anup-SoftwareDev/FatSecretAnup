@@ -6,7 +6,6 @@ import UIKit
 class CalendarView: UIView{
     
     var calendar = FSCalendar()
-    //var delegate: FSCalendarDelegate = DiaryViewController() as! FSCalendarDelegate
     var delegate: FSCalendarDelegate?
     
     override init(frame: CGRect) {
@@ -41,7 +40,6 @@ class CalendarView: UIView{
         calendar.appearance.weekdayTextColor = .white
         calendar.appearance.todayColor = fatSecretGreen
         customizeWeekdaySymbols()
-        //calendar.appearance.headerTitleColor = .white
         calendar.headerHeight = 0
     }
     

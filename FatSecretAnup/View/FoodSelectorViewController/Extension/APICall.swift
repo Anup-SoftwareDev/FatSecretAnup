@@ -92,9 +92,7 @@ extension FoodSelectionViewController {
             }
 
             if let data = data {
-                let responseString = String(data: data, encoding: .utf8)
-                //print("Raw Response: \(responseString ?? "No response data")")
-
+               
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                        let accessToken = json["access_token"] as? String {
@@ -171,5 +169,4 @@ extension FoodSelectionViewController {
         return FoodItemFormatted(serving: nutritionInfo.serving, calories: nutritionInfo.calories, fat: nutritionInfo.fat, carbs: nutritionInfo.carbs, protein: nutritionInfo.protein, foodId: foodId, foodName: foodName, foodType: foodType, foodUrl: foodUrl, isSelected: false)
     }
 
-    
 }

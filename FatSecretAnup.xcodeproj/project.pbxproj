@@ -155,7 +155,7 @@
 		CA02F41A2B381EED0032EC50 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CA8C5C202B65DA5000F35165 /* FoodSelector */,
+				CA8C5C202B65DA5000F35165 /* FoodSelectorViewController */,
 				CABD7CB12B5DFB3F00C0615F /* DiaryViewController */,
 				CA02F40C2B3266CA0032EC50 /* PremiumViewController.swift */,
 				CA02F40E2B327E960032EC50 /* TabBarController.swift */,
@@ -196,6 +196,8 @@
 			children = (
 				CA02F4202B3820A30032EC50 /* TabBarData.swift */,
 				CAC7EB7B2B4432050044FB96 /* DiaryData.swift */,
+				CA8C5C222B65DA7800F35165 /* APIModel.swift */,
+				CA8C5C212B65DA7700F35165 /* APIData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -208,26 +210,56 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		CA8C5C202B65DA5000F35165 /* FoodSelector */ = {
+		CA8C5C202B65DA5000F35165 /* FoodSelectorViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CA8C5C282B65DA8400F35165 /* FoodSelectionViewController.swift */,
+				CA8C5C312B6621F200F35165 /* TableViewCell */,
+				CA8C5C302B6621CD00F35165 /* ViewComponents */,
+				CA8C5C2F2B6621B600F35165 /* Extension */,
+			);
+			path = FoodSelectorViewController;
+			sourceTree = "<group>";
+		};
+		CA8C5C2F2B6621B600F35165 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CA8C5C272B65DA8400F35165 /* APICall.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CA8C5C302B6621CD00F35165 /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
 				CA8C5C2D2B65DA8D00F35165 /* FoodNavigationBar.swift */,
-				CA8C5C212B65DA7700F35165 /* APIData.swift */,
-				CA8C5C222B65DA7800F35165 /* APIModel.swift */,
-				CA8C5C272B65DA8400F35165 /* APICall.swift */,
 				CA8C5C252B65DA8300F35165 /* BottomView.swift */,
-				CA8C5C262B65DA8400F35165 /* FoodItemCell.swift */,
-				CA8C5C282B65DA8400F35165 /* FoodSelectionViewController.swift */,
 			);
-			path = FoodSelector;
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		CA8C5C312B6621F200F35165 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CA8C5C262B65DA8400F35165 /* FoodItemCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		CA8C5C322B6622FB00F35165 /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				CABD7CB42B5E1ADA00C0615F /* CustomNavigationBar.swift */,
+				CA8C5BEF2B5F890300F35165 /* CalendarView.swift */,
+			);
+			path = ViewComponents;
 			sourceTree = "<group>";
 		};
 		CABD7CB12B5DFB3F00C0615F /* DiaryViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CABD7CB42B5E1ADA00C0615F /* CustomNavigationBar.swift */,
-				CA8C5BEF2B5F890300F35165 /* CalendarView.swift */,
 				CA02F40A2B3266220032EC50 /* DiaryViewController.swift */,
+				CA8C5C322B6622FB00F35165 /* ViewComponents */,
 				CABD7CB32B5E1A0100C0615F /* OuterTableViewCells */,
 				CABD7CB22B5E194C00C0615F /* InnerTableViewCells */,
 			);

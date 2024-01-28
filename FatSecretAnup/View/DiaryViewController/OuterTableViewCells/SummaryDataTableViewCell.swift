@@ -1,9 +1,3 @@
-//
-//  SummaryDataTableViewCell.swift
-//  FatSecretAnup
-//
-//  Created by Anup Kuriakose on 15/1/2024.
-//
 
 import UIKit
 

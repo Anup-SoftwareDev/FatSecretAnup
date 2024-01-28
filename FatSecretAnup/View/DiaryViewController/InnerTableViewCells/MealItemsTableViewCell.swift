@@ -24,6 +24,8 @@ class MealItemsTableViewCell: UITableViewCell {
             label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
             label.translatesAutoresizingMaskIntoConstraints = false
             label.text = "Milk"
+            label.numberOfLines = 0
+            label.lineBreakMode = .byWordWrapping
             return label
         }()
     
@@ -94,14 +96,18 @@ class MealItemsTableViewCell: UITableViewCell {
         private func setUpLabelConstraints(){
             NSLayoutConstraint.activate([
                 foodLabel.leadingAnchor.constraint(equalTo: itemsView.leadingAnchor, constant: 72),
-                foodLabel.bottomAnchor.constraint(equalTo: itemsView.centerYAnchor, constant: -3),
+                //foodLabel.bottomAnchor.constraint(equalTo: itemsView.centerYAnchor, constant: -3),
+                foodLabel.trailingAnchor.constraint(equalTo: itemsView.trailingAnchor, constant: -90),
+                foodLabel.topAnchor.constraint(equalTo: itemsView.topAnchor, constant: 10)
             ])
         }
     
         private func setUpFoodServingLblConstraints(){
             NSLayoutConstraint.activate([
+                foodServingSizeLabel.bottomAnchor.constraint(equalTo: itemsView.bottomAnchor, constant: -10),
+                
                 foodServingSizeLabel.leadingAnchor.constraint(equalTo: itemsView.leadingAnchor, constant: 72),
-                foodServingSizeLabel.topAnchor.constraint(equalTo: itemsView.centerYAnchor, constant: 3),
+                foodServingSizeLabel.topAnchor.constraint(equalTo: foodLabel.bottomAnchor, constant: 6),
             ])
         }
     

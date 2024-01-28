@@ -134,17 +134,12 @@ class CustomNavigationBar: UIView {
     @objc func titleTapped() {
         delegate?.navTitleClicked()
     }
-    
 }
-
 // MARK: - CustomNavigationBar Protocol and Other Call functions
 
 extension CustomNavigationBar {
-
     // Function called to set NavigationItemTitle
     func setUpNavigationItemTitle(title: String) {
         navigationItem.title = title
     }
-    
-    
 }

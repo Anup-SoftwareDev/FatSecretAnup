@@ -1,5 +1,10 @@
 import UIKit
 
+protocol FoodSelectionViewControllerDelegate: AnyObject {
+    func didUpdateFoodSelection(updatedData: [MealItems])
+}
+
+
 class FoodSelectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, FoodNavigationBarDelegate {
     
     let foodNavigationBar = FoodNavigationBar()
@@ -7,10 +12,11 @@ class FoodSelectionViewController: UIViewController, UITableViewDelegate, UITabl
     let bottomView = BottomView()
     var apiResponse: ApiResponse?
     var foodArray: [FoodItemFormatted] = foodArrayToastExample
-    //var foodArray: [FoodItemFormatted]!
     var itemSelectedCount = 0
     let totalCalores = 2000
-
+    var selectedMealItems: [MealItems] = []
+    weak var delegate: FoodSelectionViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -71,22 +77,23 @@ class FoodSelectionViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func cancelSaveButtonClicked(_ navigationBar: FoodNavigationBar) {
+        foodArray.forEach{$0.isSelected ? selectedMealItems.append(MealItems(name: $0.foodName, serving: $0.serving, calories: $0.calories)) : nil}
+        delegate?.didUpdateFoodSelection(updatedData: selectedMealItems)
         dismiss(animated: true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
             if let searchText = searchBar.text {
-                print("Search text: \(searchText)")
                 requestAccessToken { accessToken in
                     self.searchFoodData(searchExpression: searchText, accessToken: accessToken){
                         response in self.apiResponse = response
                         }
-                    }
-                print(foodArray)
+                    self.itemSelectedCount = 0
+                    self.updateNavBottomView()
+                }
                 searchBar.resignFirstResponder()
             }
     }
- 
 }
 
 // MARK: - TableView Delegate and DataSource Functions
@@ -113,11 +120,6 @@ extension FoodSelectionViewController {
         return cell
     }
 
-    // Function that reseponds to selection or deselection of tableView Cell
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-    }
-    
     func rdiPrcentageCalc(mealCalory: Int) -> Int{
         return (mealCalory*100)/totalCalores
     }
@@ -156,4 +158,5 @@ extension FoodSelectionViewController: BottomViewDelegate {
         tableView.reloadData()
     }
 }
+
 

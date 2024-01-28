@@ -191,11 +191,6 @@ extension FoodNavigationBar {
     func setSearchBarDelegate(delegate: UISearchBarDelegate) {
         searchBar.delegate = delegate
     }
-
-    // Function to clear SearchBar
-    func clearSearchBar() {
-        searchBar.text = ""
-    }
     
     func updateNavigationBar(selectedItems: Int){
         cancelSaveLbl.text = selectedItems == 0 ? "Cancel" : "Save(\(selectedItems))"

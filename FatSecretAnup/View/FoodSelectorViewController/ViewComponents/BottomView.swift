@@ -1,9 +1,3 @@
-//
-//  BottomView.swift
-//  FatSecretAPIcall
-//
-//  Created by Anup Kuriakose on 27/1/2024.
-//
 
 import UIKit
 

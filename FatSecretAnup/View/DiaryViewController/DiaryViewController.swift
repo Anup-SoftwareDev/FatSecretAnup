@@ -465,11 +465,11 @@ extension DiaryViewController {
     
     private func configureMealsTableViewCells(indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: OuterTableViewCell.identifier, for: indexPath) as! OuterTableViewCell
-        cell.onHeightChanged = { [weak self, weak tableView] in
-                                    DispatchQueue.main.async {
-                                        tableView?.reloadRows(at: [indexPath], with: .none)
-                                    }
+        cell.onHeightChanged = { [weak tableView] in
+        DispatchQueue.main.async {
+                                tableView?.reloadRows(at: [indexPath], with: .none)
                             }
+                        }
         cell.delegate = self
         cell.viewController = self
         cell.viewModel = viewModel
@@ -511,9 +511,11 @@ extension DiaryViewController: OuterTableViewCellDelegate {
     
     func handleDelete(index: Int, option: Int) {
         viewModel.deleteMealArrayItem(index: index, option: option)
-        tableView.reloadData()
-        setUpCaLConsValLbl()
-        setUpCaLRemValLbl()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.setUpCaLConsValLbl()
+            self.setUpCaLRemValLbl()
+        }
     }
 }
 
@@ -522,38 +524,17 @@ extension DiaryViewController: OuterTableViewCellDelegate {
 extension DiaryViewController: MealHeadingDelegate {
     
     func plusImageViewClicked() {
-        //addMealAlert(title: "Meal Consumed", message: "Select Meal", optionOneTitle: "Milk", optionTwoTitle: "Egg Omelette")
         let foodSelectionViewController = FoodSelectionViewController()
-        foodSelectionViewController.modalPresentationStyle = .overFullScreen // or .fullScreen
+        foodSelectionViewController.selectedMealItems = viewModel.BreakFastItems
+        foodSelectionViewController.delegate = self
+        foodSelectionViewController.modalPresentationStyle = .overFullScreen
         present(foodSelectionViewController, animated: true)
     }
 
-    func addMealAlert (title: String, message: String, optionOneTitle: String, optionTwoTitle: String){
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let optionOneAction = UIAlertAction(title: optionOneTitle, style: .default) { _ in
-            self.handleOption(1)
-        }
-        let optionTwoAction = UIAlertAction(title: optionTwoTitle, style: .default) { _ in
-            self.handleOption(2)
-        }
-        presentAlert(alertController: alertController, action1: optionOneAction, action2: optionTwoAction)
-    }
-    
-    func handleOption(_ value: Int) {
-        viewModel.BreakFastItems.append(mealItems[value - 1])
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-        setUpCaLConsValLbl()
-        setUpCaLRemValLbl()
-    }
-    
     private func presentAlert(alertController: UIAlertController, action1: UIAlertAction, action2: UIAlertAction){
         alertController.addAction(action1)
         alertController.addAction(action2)
-        present(alertController, animated: true)
-        
+        present(alertController, animated: true)        
     }
 }
 
@@ -683,5 +664,19 @@ extension DiaryViewController {
     private func setUpNavigationTitle(dateString: String){
         navigationBar.date = dateString
         navigationBar.setUpNavigationItem()
+    }
+}
+
+extension DiaryViewController: FoodSelectionViewControllerDelegate {
+    func didUpdateFoodSelection(updatedData: [MealItems]) {
+        // Update your data source here
+        self.viewModel.BreakFastItems = updatedData
+        // Reload the table view (if needed)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.setUpCaLConsValLbl()
+            self.setUpCaLRemValLbl()
+        }
+        
     }
 }

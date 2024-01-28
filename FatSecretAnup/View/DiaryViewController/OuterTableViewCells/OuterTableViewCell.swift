@@ -35,8 +35,6 @@ class OuterTableViewCell: UITableViewCell, UITableViewDataSource, UITableViewDel
         tableView.register(MealFooterTableViewCell.self, forCellReuseIdentifier: MealFooterTableViewCell.identifier)
         tableView.register(MealItemsTableViewCell.self, forCellReuseIdentifier: MealItemsTableViewCell.identifier)
         tableView.layer.cornerRadius = 7
-        //tableView.backgroundColor = .green
-    
         tableView.layer.masksToBounds = true
         return tableView
     }()
@@ -61,6 +59,7 @@ class OuterTableViewCell: UITableViewCell, UITableViewDataSource, UITableViewDel
             innerTableView.trailingAnchor.constraint(equalTo: tableViewContainer.trailingAnchor, constant: -10),
             innerTableViewHeightConstraint,
         ])
+        innerTableView.estimatedRowHeight = 57
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -81,7 +80,7 @@ class OuterTableViewCell: UITableViewCell, UITableViewDataSource, UITableViewDel
             cell.contentView.backgroundColor = viewModel.isCollapsed ? .systemGray5 : .white
             cell.delegate = viewController
             cell.viewModel = viewModel
-            cell.onCollapseChanged = { [weak self, weak tableView] in
+            cell.onCollapseChanged = { [weak self] in
                 self?.reloadData()
             }
             cell.setUpCollapseButtonAppearance(button: cell.collapseBtn, isCollapsed: viewModel.isCollapsed)
@@ -111,7 +110,7 @@ class OuterTableViewCell: UITableViewCell, UITableViewDataSource, UITableViewDel
                 }
             cell.viewModel = viewModel
             cell.itemsView.backgroundColor = .systemGray5
-            cell.onCollapseChanged = { [weak self, weak tableView] in
+            cell.onCollapseChanged = { [weak self] in
                 self?.reloadData()
             }
             return cell
@@ -128,30 +127,32 @@ class OuterTableViewCell: UITableViewCell, UITableViewDataSource, UITableViewDel
     }
     
     func configureCell() {
-            reloadData() // Initial data load
+        reloadData()
         }
 
     func reloadData() {
-        innerTableView.reloadData()
-        innerTableView.layoutIfNeeded()
-        newHeight = innerTableView.contentSize.height
-                if innerTableViewHeightConstraint.constant != newHeight {
-                    innerTableViewHeightConstraint.constant = newHeight
-                    onHeightChanged?()
-                }
+        DispatchQueue.main.async {
+            self.innerTableView.reloadData()
+            self.innerTableView.layoutIfNeeded()
+            self.newHeight = self.innerTableView.contentSize.height
+            if self.innerTableViewHeightConstraint.constant != self.newHeight {
+                self.innerTableViewHeightConstraint.constant = self.newHeight
+                self.onHeightChanged?()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        reloadData()
         indexPath.row > 1 && indexPath.row < viewModel.tableRowsCount() - 1 ? delegate?.cellDidTriggerAlert(index: indexPath.row - 2) : nil
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         if indexPath.row == 1 || (indexPath.row > 2 && indexPath.row == viewModel.tableRowsCount() - 1) {
             return 39
-        } else {
+        } else if indexPath.row == 0 {
             return 57
+        } else {
+            return UITableView.automaticDimension
         }
     }
 }
